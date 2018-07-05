@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { fetchLcboEndpoint } from "./api/lcbo.js";
-/*insert components here*/
+
+/* COMPONENTS */
+import Header from "./components/Header";
 
 class App extends Component {
   constructor() {
@@ -40,22 +42,30 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <header>
-          <h1>Where, Wine, and How</h1>
-          <p>Discover new drinks, find where to buy them, and get lit! <span role="img" aria-labelledby="flame-emoji">🔥</span></p>
-        </header>
-        <section className="main" role="main">
+        <Header />
+        
+        <section className="main" 
+          role="main">
+          
           <div className="mapContainer">
             <div className="map"></div>
           </div>
-          <form className="inputContainer" onSubmit={this.handleSubmit}>
+          {/* <Map /> */}
+          
+          <form className="inputContainer" 
+            onSubmit={this.handleSubmit}>
             <input type="text" 
               className="textInput" 
               onChange={this.handleInputChange} 
               name="query" 
               value={this.state.query}/>
-            <input type="submit" className="submitInput" value="Find"/>
+
+            <input type="submit" 
+              className="submitInput" 
+              value="Find"/>
           </form>
+          {/* <Form /> */}
+
         </section>
       </div>
     );
