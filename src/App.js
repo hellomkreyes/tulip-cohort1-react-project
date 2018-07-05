@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
 import { fetchLcboEndpoint } from "./api/lcbo.js";
+/*insert components here*/
 
 class App extends Component {
   constructor() {
