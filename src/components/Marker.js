@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 
 class Marker extends Component {
-  constructor ({map, store}) {
-    super();
-    this.state = {
-      position: {},
-      map: {}
-    }
-  }
   componentDidUpdate () {
-    // component updated
+    // run when component updates
+    this.renderMarkers(this.props);
+  }
+  componentDidMount () {
+    // run when app mounts on page
     this.renderMarkers(this.props);
   }
   renderMarkers ({map, google, store, mapCenter}) {

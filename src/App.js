@@ -14,15 +14,16 @@ class App extends Component {
     this.state = {
       query: 'soju',
       numResults: 5,
-      drink: {},
-      error: '',
       show: true,
+      error: '',
       empty: false,
+      drink: {},
       prod: '',
       location: {
         lat: 43.641446,
         lng: -79.3826417
-      }
+      },
+      stores: []
     };
     this.fetchData = this.fetchData.bind(this);
     this.fetchStores = this.fetchStores.bind(this);
@@ -30,6 +31,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.isEmpty = this.isEmpty.bind(this);
     this.getRandomNum = this.getRandomNum.bind(this);
+    this.getStoreLocations = this.getStoreLocations.bind(this);
   }
   fetchData (query, results, number) {
     fetchLcboEndpoint('products', {
@@ -55,7 +57,7 @@ class App extends Component {
       product_id: product,
       per_page: 10
     }).then(data => {
-      console.log(data);
+      console.log(data.results);
     });
   }
   handleInputChange (e) {
@@ -80,6 +82,7 @@ class App extends Component {
     const result = Math.floor(Math.random() * number);
     return result;
   }
+  getStoreLocations () {}
   componentDidMount () {
     const random = this.getRandomNum(this.state.numResults);
     this.fetchData(this.state.query, this.state.numResults, random);

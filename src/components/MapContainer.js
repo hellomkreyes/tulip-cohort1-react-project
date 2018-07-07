@@ -35,7 +35,9 @@ class MapContainer extends Component {
           map={this.props.map}
         >
           {this.state.locations.map(location => (
-            <Marker store={location} map={this.props.map} />
+            <Marker
+              store={location}
+              map={this.props.map} />
           ))}
         </Map>
       </div>
