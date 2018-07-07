@@ -12,7 +12,7 @@ const Search = ({submit, change, value}) => {
 
       <input type='submit'
         className='submitInput'
-        value='Find Me Drinks!' />
+        value='Find Me a Drank!' />
     </form>
   );
 }

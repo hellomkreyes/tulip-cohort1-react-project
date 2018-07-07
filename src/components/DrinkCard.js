@@ -32,8 +32,8 @@ class DrinkCard extends Component {
     return (
       <div className='drink' onClick={this.searchProd}>
         <img src={this.state.thumb} className='drink-image' alt='' />
-        <p className='drink-name'>{this.state.name}</p>
         <div className='drink-details'>
+          <h3 className='drink-name'>{this.state.name}</h3>
           <p><span>Price:</span> {`$${this.state.price}`}</p>
           <p><span>Alc:</span> {`${this.state.alcohol}%`}</p>
           <p><span>Vol:</span> {`${this.state.vol}mL`}</p>

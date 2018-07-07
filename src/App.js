@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Search from './components/Search';
 import DrinkCard from './components/DrinkCard';
 import Empty from './components/Empty';
+import MapContainer from './components/MapContainer';
 
 class App extends Component {
   constructor () {
@@ -17,7 +18,11 @@ class App extends Component {
       error: '',
       show: true,
       empty: false,
-      prod: ''
+      prod: '',
+      location: {
+        lat: 43.641446,
+        lng: -79.3826417
+      }
     };
     this.fetchData = this.fetchData.bind(this);
     this.fetchStores = this.fetchStores.bind(this);
@@ -97,11 +102,10 @@ class App extends Component {
             {this.state.show && <DrinkCard key={`${this.state.prod}`} drink={this.state.drink} />}
           </div>
 
-          <div className='mapContainer'>
-            <div className='map'></div>
-          </div>
+          <MapContainer lat={this.state.location.lat} lng={this.state.location.lng}/>
 
           <div className='errorContainer'>
+            {/* Error Msg will go here */}
             {this.state.empty && <Empty />}
           </div>
 
