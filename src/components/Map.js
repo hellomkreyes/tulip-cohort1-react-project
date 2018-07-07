@@ -5,7 +5,7 @@ class Map extends Component {
   constructor ({lat, lng}) {
     super();
     this.state = {
-      zoom: 10,
+      zoom: 12,
       location: {
         lat: lat,
         lng: lng
@@ -56,7 +56,7 @@ class Map extends Component {
   render () {
     const style = {
       width: '80vw',
-      height: '50vw',
+      height: '40vw',
       background: 'lightblue'
     }
 

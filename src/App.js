@@ -13,7 +13,7 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
-      query: 'soju',
+      query: 'dessert wine',
       show: true,
       error: '',
       empty: false,
@@ -40,7 +40,7 @@ class App extends Component {
       per_page: 5
     }).then(data => {
       const drink = data.result[random];
-      // this.isEmpty(drink);
+      this.isEmpty(drink);
 
       if (!this.state.empty) {
 
@@ -75,7 +75,6 @@ class App extends Component {
     this.setQuery();
   }
   isEmpty (drink) {
-    console.log(drink)
     drink == null
       ? this.setState({ drink: {}, empty: true, show: false })
       : this.setState({ drink: drink, empty: false, show: true });
@@ -113,24 +112,29 @@ class App extends Component {
         <section className='main'
           role='main'>
 
-          <Search
-            submit={this.handleSubmit}
-            change={this.handleInputChange}
-            value={this.state.query} />
+          <aside>
+            <Search
+              submit={this.handleSubmit}
+              change={this.handleInputChange}
+              value={this.state.query}
+            />
 
-          <div className='drinksContainer'>
-            {this.state.show && <DrinkCard key={`${this.state.prod}`} drink={this.state.drink} />}
-          </div>
+            <div className='drinksContainer'>
+              {this.state.show && <DrinkCard key={`${this.state.prod}`} drink={this.state.drink} />}
+            </div>
 
-          <MapContainer
-            stores={this.state.stores}
-            lat={this.state.location.lat}
-            lng={this.state.location.lng}
-          />
+            <div className='errorContainer'>
+              {this.state.error && <ErrorMsg details={this.state.error} />}
+              {this.state.empty && <Empty />}
+            </div>
+          </aside>
 
-          <div className='errorContainer'>
-            {this.state.error && <ErrorMsg details={this.state.error} />}
-            {this.state.empty && <Empty />}
+          <div>
+            <MapContainer
+              stores={this.state.stores}
+              lat={this.state.location.lat}
+              lng={this.state.location.lng}
+            />
           </div>
 
         </section>

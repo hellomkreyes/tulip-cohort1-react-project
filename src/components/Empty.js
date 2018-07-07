@@ -4,7 +4,7 @@ const Empty = () => {
   return (
     <div className='empty'>
       <h2>╮(. ❛ ᴗ ❛.)╭</h2>
-      <p>Couldn't find any drinks</p>
+      <h3>Couldn't find any drinks</h3>
       <p>Let's try again!</p>
     </div>
   );

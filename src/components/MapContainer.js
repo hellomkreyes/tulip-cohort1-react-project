@@ -24,7 +24,7 @@ class MapContainer extends Component {
     }
 
     return (
-      <div>
+      <div className='mapContainer'>
         <Map
           google={this.props.google}
           lat={this.props.lat}
