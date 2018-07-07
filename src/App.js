@@ -98,9 +98,6 @@ class App extends Component {
     const random = this.getRandomNum(4);
     this.fetchData(this.state.query, random);
   }
-  hideApp (bool) {
-    bool ? this.setState({ show: true }) : this.setState({ show: false });
-  }
   componentDidMount () {
     this.setQuery();
   }
