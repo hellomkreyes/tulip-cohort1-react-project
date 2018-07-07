@@ -7,7 +7,6 @@ import Search from './components/Search';
 import DrinkCard from './components/DrinkCard';
 import Empty from './components/Empty';
 
-
 class App extends Component {
   constructor () {
     super();
@@ -41,7 +40,7 @@ class App extends Component {
           prod: data.result[number].id
         });
       }
-      
+
     }).catch(err => {
       this.setState({ error: err });
     });

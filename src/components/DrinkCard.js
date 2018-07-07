@@ -12,6 +12,7 @@ class DrinkCard extends Component {
       vol: drink.volume_in_milliliters
     }
     this.divideByHundred = this.divideByHundred.bind(this);
+    this.setPicture = this.setPicture.bind(this);
   }
   divideByHundred (number, key) {
     let result;
@@ -19,9 +20,13 @@ class DrinkCard extends Component {
     key === 'price' ? result = (number / 100).toFixed(2) : result = (number / 100);
     this.setState({ [key]: result });
   }
+  setPicture (url) {
+    url ? this.setState({ thumb: url }) : this.setState({ thumb: '/default_thumb.png' });
+  }
   componentDidMount () {
     this.divideByHundred(this.state.alcohol, 'alcohol');
     this.divideByHundred(this.state.price, 'price');
+    this.setPicture(this.state.thumb);
   }
   render () {
     return (
