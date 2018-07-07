@@ -9,17 +9,14 @@ class MapContainer extends Component {
   constructor () {
     super();
     this.state = {
-      locations: [
-        {
-          lat: 43.643,
-          lng: -79.3723
-        },
-        {
-          lat: 43.643,
-          lng: -79.3905
-        }
-      ]
+      locations: []
     }
+  }
+  generateKey () {
+    // https://gist.github.com/gordonbrander/2230317
+    return '_' + Math.random().toString(36).substr(2, 9);
+  }
+  componentDidUpdate () {
   }
   render () {
     if (!this.props.loaded) {
@@ -34,8 +31,9 @@ class MapContainer extends Component {
           lng={this.props.lng}
           map={this.props.map}
         >
-          {this.state.locations.map(location => (
+          {this.props.stores.map(location => (
             <Marker
+              key={this.generateKey()}
               store={location}
               map={this.props.map} />
           ))}

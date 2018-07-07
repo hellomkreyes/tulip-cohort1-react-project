@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Search from './components/Search';
 import DrinkCard from './components/DrinkCard';
 import Empty from './components/Empty';
+import ErrorMsg from './components/ErrorMsg';
 import MapContainer from './components/MapContainer';
 
 class App extends Component {
@@ -13,7 +14,6 @@ class App extends Component {
     super();
     this.state = {
       query: 'soju',
-      numResults: 5,
       show: true,
       error: '',
       empty: false,
@@ -31,21 +31,24 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.isEmpty = this.isEmpty.bind(this);
     this.getRandomNum = this.getRandomNum.bind(this);
-    this.getStoreLocations = this.getStoreLocations.bind(this);
+    this.getLocations = this.getLocations.bind(this);
+    this.setQuery = this.setQuery.bind(this);
   }
-  fetchData (query, results, number) {
+  fetchData (query, random) {
     fetchLcboEndpoint('products', {
       q: query,
-      per_page: results
+      per_page: 5
     }).then(data => {
-      const drink = data.result[number];
-      this.isEmpty(drink);
+      const drink = data.result[random];
+      // this.isEmpty(drink);
 
       if (!this.state.empty) {
+
         this.setState({
           drink: drink,
-          prod: data.result[number].id
+          prod: drink.id
         });
+        this.fetchStores(drink.id);
       }
 
     }).catch(err => {
@@ -57,7 +60,7 @@ class App extends Component {
       product_id: product,
       per_page: 10
     }).then(data => {
-      console.log(data.results);
+      this.getLocations(data.result);
     });
   }
   handleInputChange (e) {
@@ -68,25 +71,39 @@ class App extends Component {
   }
   handleSubmit (e) {
     e.preventDefault();
-    const random = this.getRandomNum(this.state.numResults);
-    this.fetchData(this.state.query, this.state.numResults, random);
-    this.fetchStores(this.state.prod);
+    this.setState({ stores: [], drink: {} });
+    this.setQuery();
   }
   isEmpty (drink) {
-    drink == null 
+    console.log(drink)
+    drink == null
       ? this.setState({ drink: {}, empty: true, show: false })
-      : this.setState({ empty: false, show: true });
+      : this.setState({ drink: drink, empty: false, show: true });
   }
   getRandomNum (number) {
     // gets a random number from 0 to passed number
-    const result = Math.floor(Math.random() * number);
-    return result;
+    const randomNum = Math.floor(Math.random() * number);
+    return randomNum;
   }
-  getStoreLocations () {}
+  getLocations (stores) {
+    const coordinates = stores.map(store => {
+      return {
+        lat: store.latitude,
+        lng: store.longitude
+      };
+    });
+    
+    this.setState({ stores: coordinates });
+  }
+  setQuery () {
+    const random = this.getRandomNum(4);
+    this.fetchData(this.state.query, random);
+  }
+  hideApp (bool) {
+    bool ? this.setState({ show: true }) : this.setState({ show: false });
+  }
   componentDidMount () {
-    const random = this.getRandomNum(this.state.numResults);
-    this.fetchData(this.state.query, this.state.numResults, random);
-    this.fetchStores(this.state.prod);
+    this.setQuery();
   }
   render () {
     return (
@@ -105,10 +122,14 @@ class App extends Component {
             {this.state.show && <DrinkCard key={`${this.state.prod}`} drink={this.state.drink} />}
           </div>
 
-          <MapContainer lat={this.state.location.lat} lng={this.state.location.lng}/>
+          <MapContainer
+            stores={this.state.stores}
+            lat={this.state.location.lat}
+            lng={this.state.location.lng}
+          />
 
           <div className='errorContainer'>
-            {/* Error Msg will go here */}
+            {this.state.error && <ErrorMsg details={this.state.error} />}
             {this.state.empty && <Empty />}
           </div>
 

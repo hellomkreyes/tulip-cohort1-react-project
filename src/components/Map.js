@@ -5,7 +5,7 @@ class Map extends Component {
   constructor ({lat, lng}) {
     super();
     this.state = {
-      zoom: 14,
+      zoom: 10,
       location: {
         lat: lat,
         lng: lng

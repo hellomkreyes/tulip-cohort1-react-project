@@ -8,7 +8,9 @@ const Search = ({submit, change, value}) => {
         className='textInput'
         onChange={change}
         name='query'
-        value={value} />
+        value={value}
+        placeholder='Soju'
+        required />
 
       <input type='submit'
         className='submitInput'
