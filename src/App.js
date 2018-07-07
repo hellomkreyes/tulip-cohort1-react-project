@@ -16,6 +16,7 @@ class App extends Component {
       numResults: 5,
       drink: {},
       error: '',
+      show: true,
       empty: false,
       prod: ''
     };
@@ -23,7 +24,6 @@ class App extends Component {
     this.fetchStores = this.fetchStores.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.isEmpty = this.isEmpty.bind(this);
     this.getRandomNum = this.getRandomNum.bind(this);
   }
@@ -32,12 +32,16 @@ class App extends Component {
       q: query,
       per_page: results
     }).then(data => {
-      this.setState({
-        drink: data.result[number],
-        prod: data.result[number].id
-      });
+      const drink = data.result[number];
+      this.isEmpty(drink);
 
-      this.isEmpty(this.state.drinks);
+      if (!this.state.empty) {
+        this.setState({
+          drink: drink,
+          prod: data.result[number].id
+        });
+      }
+      
     }).catch(err => {
       this.setState({ error: err });
     });
@@ -58,14 +62,14 @@ class App extends Component {
   }
   handleSubmit (e) {
     e.preventDefault();
-    this.fetchData(this.state.query);
+    const random = this.getRandomNum(this.state.numResults);
+    this.fetchData(this.state.query, this.state.numResults, random);
+    this.fetchStores(this.state.prod);
   }
-  handleClick (e) {
-    e.preventDefault();
-    this.setState({ product: e });
-  }
-  isEmpty (drinks) {
-    drinks == false ? this.setState({ empty: true }) : this.setState({ empty: false });
+  isEmpty (drink) {
+    drink == null 
+      ? this.setState({ drink: {}, empty: true, show: false })
+      : this.setState({ empty: false, show: true });
   }
   getRandomNum (number) {
     // gets a random number from 0 to passed number
@@ -78,11 +82,6 @@ class App extends Component {
     this.fetchStores(this.state.prod);
   }
   render () {
-    let emptyMsg;
-    if (this.state.empty) {
-      emptyMsg = <Empty />
-    }
-
     return (
       <div className='container'>
         <Header />
@@ -96,7 +95,7 @@ class App extends Component {
             value={this.state.query} />
 
           <div className='drinksContainer'>
-            <DrinkCard key={`${this.state.prod}`} drink={this.state.drink} />
+            {this.state.show && <DrinkCard key={`${this.state.prod}`} drink={this.state.drink} />}
           </div>
 
           <div className='mapContainer'>
@@ -104,7 +103,7 @@ class App extends Component {
           </div>
 
           <div className='errorContainer'>
-            {emptyMsg}
+            {this.state.empty && <Empty />}
           </div>
 
         </section>
