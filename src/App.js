@@ -44,7 +44,8 @@ class App extends Component {
   }
   fetchStores (product) {
     fetchLcboEndpoint('stores', {
-      product_id: product
+      product_id: product,
+      per_page: 10
     }).then(data => {
       console.log(data);
     });
@@ -69,12 +70,12 @@ class App extends Component {
   getRandomNum (number) {
     // gets a random number from 0 to passed number
     const result = Math.floor(Math.random() * number);
-    console.log(result);
     return result;
   }
   componentDidMount () {
     const random = this.getRandomNum(this.state.numResults);
     this.fetchData(this.state.query, this.state.numResults, random);
+    this.fetchStores(this.state.prod);
   }
   render () {
     let emptyMsg;
