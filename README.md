@@ -1,77 +1,24 @@
-## 🚧 Setup
+## 🍷 What, Where, and Wine 🍷
 
-Fork this repository and clone your forked copy onto your machine.
+A single page application created with `create-react-app`.
+View the [live project here](https://what-where-wine.now.sh/)!
 
-Go to the LCBO API website and sign up for a key [here](https://lcboapi.com/manager/sign-up)
+## 🤔 What does it use?
 
-Create a `.env` file in the root folder of this app and add the following entry:
+1. [LCBO API](https://lcboapi.com/docs/v1): For querying delish drinks
+2. [Google Maps + React](https://www.npmjs.com/package/google-maps-react): Uses the `google-maps-react` library to render a google map on the page
+3. [ScriptCache + React + Google API](https://gist.github.com/auser/1d55aa3897f15d17caf21dc39b85b663): Helper functions for querying the Google Maps API
+4. [This Tutorial](https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/): on how to render map and marker components in your app!
 
-```sh
-REACT_APP_LCBO_API_KEY=<Your API key here>
-```
+## 👩‍💻 How does it work?
 
-This allows us to keep our API keys outside of source control as the `.env` file is not tracked by git.
+Type in the search field for a type of drink you're looking for. The default is `dessert wine`, **YUM**.
+Then we'll give you back a ଘ(੭*ˊᵕˋ)੭* ̀ˋ ʳᵃⁿᵈᵒᵐ ᵈʳᶦⁿᵏ.
+The map will show markers of LCBO stores that have the drink in stock!
 
-Install dependencies
+## 👩‍💻 Who is this for?
+For everyone and anyone looking to get lit 🔥 and discover new drinks 🍾!
+🍹 🍷 🍶 🍸 🍺 🥃
 
-```sh
-$ yarn install
-```
-
-## 💻 Running the App
-
-This app was created with `create-react-app`. To run the app for development:
-
-```sh
-$ yarn start
-```
-
-## 📝 Assignment
-
-Create an app where there is an input box that takes a search query and uses the LCBO API to search for the stores that have products that match that search query. Display the stores that are returned from the API on a map.
-
-#### 📕 Requirements
-
-1. Single page app using this react codebase
-2. Input box with a button, when you click the button request the stores with products that match that search query
-3. Display stores lat/lng on the map
-4. Loading state for when API requests are being made
-5. Error state to indicate that something has gone wrong
-6. Empty state if there are no stores found
-
-#### 💾 Technical Details
-
-* [LCBO API Docs](https://lcboapi.com/docs/v1): Find the end point that works best for our use case
-* [Google Maps + React](https://github.com/tomchentw/react-google-maps): This is a good library to use to display markers on a map.
-* This assignment is not focused around styling and presentation so do as much or as little of this as you'd like. Some good options for styling with React in case you are looking into this are [tachyons](https://github.com/tachyons-css/tachyons) and [styled-components](https://github.com/styled-components/styled-components)
-
-#### 🍷 Querying the LCBO api
-
-There is a helper function already built in under `api/lcbo.js` for querying the LCBO api. You can use it as follows:
-
-```javascript
-import { fetchLcboEndpoint } from "./api/lcbo.js";
-
-fetchLcboEndpoint("products", {
-  q: "red wine"
-});
-```
-
-The first argument is the LCBO endpoint you'd like to call and the second argument is an optional object that takes any query parameters. There is an example of this being used in `App.js`.
-
-## 🗓 Submitting your assignment
-
-This assignment is due on Friday July 6th at 11.59pm. Please make sure you submit using the Google form by then.
-
-Deploy your app using `now`:
-
-1. Dowload [now](https://zeit.co/download)
-2. In your terminal, in the root folder of the app run
-
-```sh
-$ now
-```
-
-3. Submit your homework using this [form](https://goo.gl/forms/fe8PWvnoIPV1LgT13), it will ask you for your repo link and the deployed link to your app.
-
-If you have any trouble with submitting or deploying please reach out on Slack to your TA, an instructor or on the #help-me channel 🙂
+## 🍹 🍷 🍶 Give What, Where, and Wine a try! 🍷 🍸 🍺 🥃
+[what-where-wine.now.sh](https://what-where-wine.now.sh/)
