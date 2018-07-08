@@ -4,12 +4,116 @@
   padding: 0;
 }
 
+html {
+  background: #1E1631;
+  background: #282A36;
+  color: #E2ECEA;
+  font-family: 'Song Myung', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Vollkorn', serif;
+}
+
+h2 span {
+  font-size: 50px;
+}
+
+input, [type=submit] {
+  font-family: 'Song Myung', serif;
+  -webkit-appearance: none;
+  font-size: 22px;
+  margin: 5px 0;
+  padding: 10px;
+}
+
+[type=text] {
+  border: none;
+  background: #F09165;
+  color: #1E1631;
+}
+
+[type=submit] {
+  border: none;
+  padding: 10px;
+  position: relative;
+  transform: translateY(-5px);
+  background: #50B87B;
+  box-shadow: #33764F 0 5px 0 0;
+  outline: none;
+}
+
+[type=submit]:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
 header {
   text-align: center;
+  padding: 50px 20px 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+header h2 {
+  margin-top: -25px;
+  font-size: 20px;
 }
 
 .main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+aside {
+  padding: 0 20px;
+  height: 40vw;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.drinksContainer {
+  background: #DC4E4C;
+  padding: 10px;
+  color: #E2ECEA;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+}
+
+a, a:visited {
+  font-size: 20px;
+  color: #E2ECEA;
+  text-decoration: none;
+  transition: all 250ms ease-in;
+}
+
+a:hover, a:focus {
+  color: #F09165;
+}
+
+.empty, .error {
+  background: #DC4E4C;
+  padding: 0 20px 20px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.error h2 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.empty h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
 }

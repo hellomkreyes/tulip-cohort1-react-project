@@ -135,6 +135,10 @@ class App extends Component {
           </div>
 
         </section>
+
+        <footer>
+          <a href='//hellomkreyes.com' target='_blank'>M.K. Reyes</a>
+        </footer>
       </div>
     );
   }
