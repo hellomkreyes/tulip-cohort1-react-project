@@ -21,5 +21,5 @@ For everyone and anyone looking to get lit 🔥 and discover new drinks 🍾!
 This is **more than just a wine app**. You can search for soju, beer, sake, vodka, bourbon, rum, etc.
 🍹 🍷 🍶 🍸 🍺 🥃
 
-## 🍹 🍷 🍶 Give What, Where, and Wine a try! 🍷 🍸 🍺 🥃
+## ଘ(੭*ˊᵕˋ)੭* ̀ˋ Give What, Where, and Wine a try!
 [what-where-wine.now.sh](https://what-where-wine.now.sh/)
