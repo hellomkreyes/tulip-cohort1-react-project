@@ -18,6 +18,7 @@ The map will show markers of LCBO stores that have the drink in stock!
 
 ## 👩‍💻 Who is this for?
 For everyone and anyone looking to get lit 🔥 and discover new drinks 🍾!
+This is **more than just a wine app**. You can search for soju, beer, sake, vodka, bourbon, rum, etc.
 🍹 🍷 🍶 🍸 🍺 🥃
 
 ## 🍹 🍷 🍶 Give What, Where, and Wine a try! 🍷 🍸 🍺 🥃
